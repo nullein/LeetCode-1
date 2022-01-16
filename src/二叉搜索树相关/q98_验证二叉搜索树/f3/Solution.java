@@ -18,24 +18,24 @@ public class Solution {
         Queue<Integer> max = new LinkedList<>();
         while (!queue.isEmpty()) {
             TreeNode temp = queue.poll();
-            Integer maxt = max.poll();
-            Integer mint = min.poll();
+            Integer maxT = max.poll();
+            Integer minT = min.poll();
 
-            if (mint != null && temp.val <= mint) {
+            if (minT != null && temp.val <= minT) {
                 return false;
             }
-            if (maxt != null && temp.val >= maxt) {
+            if (maxT != null && temp.val >= maxT) {
                 return false;
             }
 
             if (temp.left != null) {
-                min.add(mint);
+                min.add(minT);
                 max.add(temp.val);
                 queue.add(temp.left);
             }
 
             if (temp.right != null) {
-                max.add(maxt);
+                max.add(maxT);
                 min.add(temp.val);
                 queue.add(temp.right);
             }
